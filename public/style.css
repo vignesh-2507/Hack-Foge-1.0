@@ -28,7 +28,6 @@ body {
     text-align: center;
     align-items: center;
     display: flex;
-    letter-spacing: 2px;
     gap: 20px;
     cursor: pointer;
 }
