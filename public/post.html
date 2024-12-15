@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="home"><button onclick="location.assign('/')"><img src="./home.svg">Home</button></div>
+        <div class="upload"><button id="uplbtn" onclick="location.assign('/upload')"><img src="./upload.svg" alt="">upload</button></div>
+        <div class="post"><button id="postbtn" onclick="location.assign('/post')"><img src="./post.svg" alt="">Post</button></div>
+        <div class="about"><button><img src="./aboutus.svg" onclick="location.assign('/about')" alt="">About</button></div>
+        <div class="contact"><button><img src="./contact.svg" onclick="location.assign('/contact')" alt="">Contact us</button></div>
+    </div>
+    <h2>problems near you</h2>
+    <div id="gallery"></div>
+    <script>
+       
+
+        // Function to load and display images from the server
+        async function loadGallery() {
+            const response = await fetch('/gallery');
+            const images = await response.json();
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+            images.forEach(image => {
+                const img = document.createElement('img');
+                img.src = image.url;
+                gallery.appendChild(img);
+            });
+        }
+
+        // Load gallery on page load
+        loadGallery();
+    </script>
+</body>
+</html>
